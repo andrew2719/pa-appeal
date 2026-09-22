@@ -1,0 +1,20 @@
+# documents
+markdownify
+beautifulsoup4
+
+# retrieval
+numpy
+rank-bm25
+sentence-transformers      # embeddings + the reranker; CPU is fine
+
+# the LLM
+google-genai               # Gemini. swap if you use a different provider
+pydantic
+
+# checking quotes
+rapidfuzz
+
+# numbers and plots
+scikit-learn
+matplotlib
+tqdm
