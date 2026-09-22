@@ -4,3 +4,4 @@ data/cache/
 __pycache__/
 .env
 .venv/
+data/raw/*_files/
