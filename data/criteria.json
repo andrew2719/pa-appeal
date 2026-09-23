@@ -3,90 +3,287 @@
     "id": "apnea_def",
     "summary": "Apnea means airflow stops for at least 10 seconds",
     "text": "Apnea is defined as the cessation of airflow for at least 10 seconds.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "definition",
+    "device": null,
+    "spec_fields": [],
+    "text_core": "Apnea is defined as the cessation of airflow for at least 10 seconds."
   },
   {
     "id": "hypopnea_def",
     "summary": "Hypopnea lasts at least 10 seconds, reduces airflow by at least 30%, and lowers oxygen saturation by at least 4%",
     "text": "Hypopnea is defined as an abnormal respiratory event lasting at least 10 seconds associated with at least a 30% reduction in thoracoabdominal movement or airflow as compared to baseline, and with at least a 4% decrease in oxygen saturation.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "definition",
+    "device": null,
+    "spec_fields": [],
+    "text_core": "Hypopnea is defined as an abnormal respiratory event lasting at least 10 seconds associated with at least a 30% reduction in thoracoabdominal movement or airflow as compared to baseline, and with at least a 4% decrease in oxygen saturation."
   },
   {
-    "id": "short_study_events",
-    "summary": "Studies under two hours still require 30 events without symptoms or 10 events with symptoms",
-    "text": "If the AHI or RDI is calculated based on less than 2 hours of sleep or recording time, the total number of recorded events used to calculate the AHI or RDI (respectively) must be at least the number of events that would have been required in a 2 hour period (i.e., must reach ≥30 events without symptoms or ≥10 events with symptoms).",
-    "source": "L33718"
+    "id": "ahi_def",
+    "summary": "AHI is apneas plus hypopneas per hour of sleep, RERAs excluded, measurable only in a Type I or Type II study",
+    "text": "The apnea-hypopnea index (AHI) is defined as the average number of episodes of apnea and hypopnea per hour of sleep without the use of a positive airway pressure device. For purposes of this policy, respiratory effort related arousals (RERAs) are not included in the calculation of the AHI. Sleep time can only be measured in a Type I (facility based polysomnogram) or Type II sleep study (see descriptions below).",
+    "source": "L33718",
+    "phase": "definition",
+    "device": null,
+    "spec_fields": [],
+    "text_core": "The apnea-hypopnea index (AHI) is defined as the average number of episodes of apnea and hypopnea per hour of sleep without the use of a positive airway pressure device. For purposes of this policy, respiratory effort related arousals (RERAs) are not included in the calculation of the AHI. Sleep time can only be measured in a Type I (facility based polysomnogram) or Type II sleep study (see descriptions below)."
+  },
+  {
+    "id": "rdi_def",
+    "summary": "RDI is apneas plus hypopneas per hour of recording, RERAs excluded, reported by home sleep studies",
+    "text": "The respiratory disturbance index (RDI) is defined as the average number of apneas plus hypopneas per hour of recording without the use of a positive airway pressure device. For purposes of this policy, respiratory effort related arousals (RERAs) are not included in the calculation of the RDI. The RDI is reported in Type III, Type IV, and other home sleep studies.",
+    "source": "L33718",
+    "phase": "definition",
+    "device": null,
+    "spec_fields": [],
+    "text_core": "The respiratory disturbance index (RDI) is defined as the average number of apneas plus hypopneas per hour of recording without the use of a positive airway pressure device. For purposes of this policy, respiratory effort related arousals (RERAs) are not included in the calculation of the RDI. The RDI is reported in Type III, Type IV, and other home sleep studies."
   },
   {
     "id": "pap_device_codes",
     "summary": "PAP includes E0601 single-level CPAP and E0470 bi-level without backup rate",
     "text": "In this policy, the term PAP (positive airway pressure) device will refer to both a single-level continuous positive airway pressure device (E0601) and a bi-level respiratory assist device without back-up rate (E0470) when it is used in the treatment of obstructive sleep apnea.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "definition",
+    "device": null,
+    "spec_fields": [],
+    "text_core": "In this policy, the term PAP (positive airway pressure) device will refer to both a single-level continuous positive airway pressure device (E0601) and a bi-level respiratory assist device without back-up rate (E0470) when it is used in the treatment of obstructive sleep apnea."
   },
   {
     "id": "initial_evaluation",
     "summary": "An in-person clinical evaluation must occur before the sleep test",
     "text": "1. The beneficiary has an in-person clinical evaluation by the treating practitioner prior to the sleep test to assess the beneficiary for obstructive sleep apnea.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "initial_eval_before_test"
+    ],
+    "text_core": "The beneficiary has an in-person clinical evaluation by the treating practitioner prior to the sleep test to assess the beneficiary for obstructive sleep apnea."
   },
   {
     "id": "B1",
     "summary": "AHI or RDI at least 15 per hour with at least 30 events",
     "text": "1. The apnea-hypopnea index (AHI) or Respiratory Disturbance Index (RDI) is greater than or equal to 15 events per hour with a minimum of 30 events; or,",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "ahi",
+      "events"
+    ],
+    "text_core": "The apnea-hypopnea index (AHI) or Respiratory Disturbance Index (RDI) is greater than or equal to 15 events per hour with a minimum of 30 events"
   },
   {
     "id": "B2",
     "summary": "AHI or RDI from 5 through 14 with at least 10 events and a qualifying symptom or condition",
     "text": "2. The AHI or RDI is greater than or equal to 5 and less than or equal to 14 events per hour with a minimum of 10 events and documentation of:\n\n1. Excessive daytime sleepiness, impaired cognition, mood disorders, or insomnia; or,\n2. Hypertension, ischemic heart disease, or history of stroke.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "ahi",
+      "events",
+      "symptom"
+    ],
+    "text_core": "The AHI or RDI is greater than or equal to 5 and less than or equal to 14 events per hour with a minimum of 10 events and documentation of:\n\n1. Excessive daytime sleepiness, impaired cognition, mood disorders, or insomnia; or,\n2. Hypertension, ischemic heart disease, or history of stroke."
+  },
+  {
+    "id": "short_study_events",
+    "summary": "Studies under two hours still require 30 events without symptoms or 10 events with symptoms",
+    "text": "If the AHI or RDI is calculated based on less than 2 hours of sleep or recording time, the total number of recorded events used to calculate the AHI or RDI (respectively) must be at least the number of events that would have been required in a 2 hour period (i.e., must reach ≥30 events without symptoms or ≥10 events with symptoms).",
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "ahi",
+      "events",
+      "study_hours",
+      "symptom"
+    ],
+    "text_core": "If the AHI or RDI is calculated based on less than 2 hours of sleep or recording time, the total number of recorded events used to calculate the AHI or RDI (respectively) must be at least the number of events that would have been required in a 2 hour period (i.e., must reach ≥30 events without symptoms or ≥10 events with symptoms)."
+  },
+  {
+    "id": "sleep_test_valid",
+    "summary": "The sleep test is Medicare-valid, FDA-approved, ordered by the treating practitioner, and run by a qualified entity",
+    "text": "Coverage of a PAP device for the treatment of OSA is limited to claims where the diagnosis of OSA is based upon all of the following:\n\n1. A sleep test (Type I, II, III, IV, Other) that meets the Medicare requirements for a valid sleep test as outlined in NCD 240.4.1 and the applicable A/B MAC LCD and Billing and Coding article; and,\n2. A sleep test that is approved by the Food and Drug Administration (FDA) as a diagnostic device; and,\n3. The sleep test results meet the coverage criteria in effect for the date of service of the claim for the PAP device; and,\n4. The sleep test is ordered by the beneficiary’s treating practitioner; and,\n5. The sleep test is conducted by an entity that qualifies as a Medicare provider of sleep tests and is in compliance with all applicable state regulatory requirements.",
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "test_type",
+      "medicare_valid",
+      "fda_approved",
+      "meets_date_criteria",
+      "test_ordered_by",
+      "test_provider_qualified",
+      "state_requirements_met"
+    ],
+    "text_core": "Coverage of a PAP device for the treatment of OSA is limited to claims where the diagnosis of OSA is based upon all of the following:\n\n1. A sleep test (Type I, II, III, IV, Other) that meets the Medicare requirements for a valid sleep test as outlined in NCD 240.4.1 and the applicable A/B MAC LCD and Billing and Coding article; and,\n2. A sleep test that is approved by the Food and Drug Administration (FDA) as a diagnostic device; and,\n3. The sleep test results meet the coverage criteria in effect for the date of service of the claim for the PAP device; and,\n4. The sleep test is ordered by the beneficiary’s treating practitioner; and,\n5. The sleep test is conducted by an entity that qualifies as a Medicare provider of sleep tests and is in compliance with all applicable state regulatory requirements."
   },
   {
     "id": "device_instruction",
     "summary": "The beneficiary or caregiver receives instruction on device use and care",
     "text": "3. The beneficiary and/or their caregiver has received instruction from the supplier of the device in the proper use and care of the equipment.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "instruction_given"
+    ],
+    "text_core": "The beneficiary and/or their caregiver has received instruction from the supplier of the device in the proper use and care of the equipment."
   },
   {
     "id": "E0470_trial",
     "summary": "E0601 must be tried and proven ineffective before E0470",
     "text": "4. An E0601 has been tried and proven ineffective based on a therapeutic trial conducted in either a facility or in a home setting.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0470"
+    ],
+    "spec_fields": [
+      "e0601_tried",
+      "e0601_ineffective"
+    ],
+    "text_core": "An E0601 has been tried and proven ineffective based on a therapeutic trial conducted in either a facility or in a home setting."
   },
   {
     "id": "E0470_ineffective",
     "summary": "Ineffective means failure to meet therapeutic goals despite optimal E0601 therapy",
     "text": "Ineffective is defined as documented failure to meet therapeutic goals using an E0601 during the titration portion of a facility-based study or during home use despite optimal therapy (i.e., proper mask selection and fitting and appropriate pressure settings).",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0470"
+    ],
+    "spec_fields": [
+      "e0601_ineffective"
+    ],
+    "text_core": "Ineffective is defined as documented failure to meet therapeutic goals using an E0601 during the titration portion of a facility-based study or during home use despite optimal therapy (i.e., proper mask selection and fitting and appropriate pressure settings)."
   },
   {
     "id": "E0471_osa",
-    "summary": "E0471 with backup rate is not reasonable and necessary when the primary diagnosis is OSA",
+    "summary": "The device billed is eligible for OSA coverage: E0601 or E0470, not E0471 with a backup rate",
     "text": "A bi-level positive airway pressure device with back-up rate (E0471) is not reasonable and necessary if the primary diagnosis is OSA. If an E0471 is billed with a diagnosis of OSA, it will be denied as not reasonable and necessary.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "initial",
+    "device": [
+      "E0471"
+    ],
+    "spec_fields": [
+      "device",
+      "primary_dx"
+    ],
+    "text_core": "A bi-level positive airway pressure device with back-up rate (E0471) is not reasonable and necessary if the primary diagnosis is OSA. If an E0471 is billed with a diagnosis of OSA, it will be denied as not reasonable and necessary."
   },
   {
     "id": "reeval_window",
     "summary": "Continued coverage requires reevaluation from day 31 through day 91",
     "text": "Continued coverage of a PAP device (E0470 or E0601) beyond the first three months of therapy requires that, no sooner than the 31st day but no later than the 91st day after initiating therapy, the treating practitioner must conduct a clinical re-evaluation and document that the beneficiary is benefiting from PAP therapy.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "continued",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "reeval_day"
+    ],
+    "text_core": "Continued coverage of a PAP device (E0470 or E0601) beyond the first three months of therapy requires that, no sooner than the 31st day but no later than the 91st day after initiating therapy, the treating practitioner must conduct a clinical re-evaluation and document that the beneficiary is benefiting from PAP therapy."
+  },
+  {
+    "id": "reeval_late",
+    "summary": "A reevaluation after day 91 still allows coverage, beginning on the date of that reevaluation",
+    "text": "If the treating practitioner re-evaluation does not occur until after the 91st day but the evaluation demonstrates that the beneficiary is benefiting from PAP therapy as defined in criteria 1 and 2 above, continued coverage of the PAP device will commence with the date of that re-evaluation.",
+    "source": "L33718",
+    "phase": "continued",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "reeval_day",
+      "symptoms_improved",
+      "adherence_pct"
+    ],
+    "text_core": "If the treating practitioner re-evaluation does not occur until after the 91st day but the evaluation demonstrates that the beneficiary is benefiting from PAP therapy as defined in criteria 1 and 2 above, continued coverage of the PAP device will commence with the date of that re-evaluation."
   },
   {
     "id": "symptoms_improved",
     "summary": "Reevaluation must document improvement in OSA symptoms",
     "text": "1. In-person clinical re-evaluation by the treating practitioner with documentation that symptoms of obstructive sleep apnea are improved; and,",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "continued",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "symptoms_improved"
+    ],
+    "text_core": "In-person clinical re-evaluation by the treating practitioner with documentation that symptoms of obstructive sleep apnea are improved"
   },
   {
     "id": "adherence_reviewed",
     "summary": "The practitioner must review objective adherence evidence",
     "text": "2. Objective evidence of adherence to use of the PAP device, reviewed by the treating practitioner.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "continued",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "adherence_reviewed"
+    ],
+    "text_core": "Objective evidence of adherence to use of the PAP device, reviewed by the treating practitioner."
   },
   {
     "id": "adherence",
     "summary": "PAP used at least four hours per night on 70% of nights during a consecutive 30-day period",
     "text": "Adherence to therapy is defined as use of PAP ≥4 hours per night on 70% of nights during a consecutive thirty (30) day period anytime during the first three (3) months of initial usage.",
-    "source": "L33718"
+    "source": "L33718",
+    "phase": "continued",
+    "device": [
+      "E0601",
+      "E0470"
+    ],
+    "spec_fields": [
+      "usage_hours",
+      "usage_pct",
+      "usage_window_days"
+    ],
+    "text_core": "Adherence to therapy is defined as use of PAP ≥4 hours per night on 70% of nights during a consecutive thirty (30) day period anytime during the first three (3) months of initial usage."
+  },
+  {
+    "id": "swo",
+    "summary": "A Standard Written Order reaches the supplier before the claim is submitted",
+    "text": "A Standard Written Order (SWO) must be communicated to the supplier before a claim is submitted. If the supplier bills for an item addressed in this policy without first receiving a completed SWO, the claim shall be denied as not reasonable and necessary.",
+    "source": "L33718",
+    "phase": "general",
+    "device": null,
+    "spec_fields": [
+      "swo_on_file"
+    ],
+    "text_core": "A Standard Written Order (SWO) must be communicated to the supplier before a claim is submitted. If the supplier bills for an item addressed in this policy without first receiving a completed SWO, the claim shall be denied as not reasonable and necessary."
   }
 ]
