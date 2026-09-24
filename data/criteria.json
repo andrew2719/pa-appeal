@@ -223,7 +223,10 @@
     "spec_fields": [
       "reeval_day",
       "symptoms_improved",
-      "adherence_pct"
+      "adherence_reviewed",
+      "usage_hours",
+      "usage_pct",
+      "usage_window_days"
     ],
     "text_core": "If the treating practitioner re-evaluation does not occur until after the 91st day but the evaluation demonstrates that the beneficiary is benefiting from PAP therapy as defined in criteria 1 and 2 above, continued coverage of the PAP device will commence with the date of that re-evaluation."
   },
