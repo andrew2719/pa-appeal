@@ -59,6 +59,48 @@ invent zero clauses across 239 decisions. Row 0 — the whole policy in context 
 inside all of them. With 40 cases that column is not precise enough to order anything, and I am
 not going to pretend otherwise.
 
+### What "quotes real" actually proves
+
+That column is **provenance**: the sentence really does appear in the document the model named,
+established by string matching. That is all a string match can establish. **It does not show that
+the sentence logically supports the label** — nothing in this project checks that, and no amount
+of string matching could.
+
+The next question down is whether the citation points at *the rule being decided*. Of the
+citations whose provenance checks out:
+
+| # | config | own rule | other rule | policy prose | own / citations | own / all decisions |
+|---|---|---|---|---|---|---|
+| 0 | whole policy | 208 | 0 | 0 | 208/230 = 90.4% | 208/239 = 87.0% |
+| 1 | naive | 132 | 0 | 80 | 132/216 = 61.1% | 132/239 = 55.2% |
+| 2 | + chunk by rule | 177 | 2 | 48 | 177/232 = 76.3% | 177/239 = 74.1% |
+| 3 | + BM25 | 121 | 1 | 75 | 121/217 = 55.8% | 121/239 = 50.6% |
+| 4 | + reranker | 225 | 6 | 0 | **225/231 = 97.4%** | **225/239 = 94.1%** |
+| 5 | + quote check + abstain | 225 | 6 | 0 | 225/231 = 97.4% | 225/239 = 94.1% |
+
+- **own rule** — the quote sits inside that criterion's canonical sentence, or contains it
+- **other rule** — it matches a *different* criterion's sentence
+- **policy prose** — real policy text, but not one of the 20 curated sentences
+
+Two denominators, because they answer different questions. `own / citations` is citation quality
+when the model cites at all; `own / all decisions` folds in how often it declined to cite.
+
+**`policy prose` is not an error.** `criteria.json` stores one canonical sentence per rule, not
+every sentence in L33718 that supports it, so quoting a different supporting sentence lands here.
+And all six `other rule` citations in the final config are the same criterion —
+`symptoms_improved`, quoting `reeval_window`. Those are two criteria I split out of one continuous
+policy requirement, so the citation is defensible and the flag is an artifact of my curation
+rather than a model error.
+
+This is reported as a **diagnostic and does not trigger abstention**. Promoting it would have
+abstained on those 6 decisions, all 6 of which were correct and none of which were wrong — the
+same bad trade as blanket abstention below.
+
+Worth noticing: `own / citations` tracks retrieval closely (61% → 76% → 56% → 97%), so it is
+largely measuring whether the model was handed the right chunk. Row 0 is the exception — given the
+whole policy it scores 90.4% with **zero** wrong-rule and **zero** prose citations: it either
+finds the canonical sentence or says nothing.
+
 ### Three things I did not expect
 
 **BM25 makes it worse.** Row 3 has the lowest F1 in the table (0.79) and the worst quote rate
@@ -129,6 +171,9 @@ prompt hash, so a repeated run costs nothing, but changing the system prompt inv
 - Criterion selection is **given, not predicted**: the pipeline is told which rules apply to each
   case, using the same phase and device gates the oracle uses. Gold *labels* never enter the
   prompt. What is measured is adjudication, not triage.
+- String verification proves **provenance, not logical support**. A quote can genuinely be in the
+  policy and still fail to justify the label; nothing here checks entailment. PLAN.md lists
+  entailment checking as the first thing worth adding once everything else is finished.
 - One policy, one model, one revision. Says nothing about how this behaves anywhere else.
 - No claim that this is clinically valid, legally sufficient, or that it reduces denials.
 
