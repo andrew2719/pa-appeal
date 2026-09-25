@@ -5,3 +5,6 @@ __pycache__/
 .env
 .venv/
 data/raw/*_files/
+
+# gradio share/flag artifacts
+.gradio/

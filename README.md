@@ -142,6 +142,45 @@ applicable" and returned `insufficient_evidence`. Roughly half of all `unmet` go
 this pattern. `05_results.ipynb` reports the metrics both ways; excluding those decisions leaves
 row 4 at 0.90, so the disagreement is not propping up the headline number.
 
+### The letter
+
+Drafting was never the hard part, and the project treats it that way. `07_letter.ipynb` builds the
+letter from **verified decisions only** — a criterion reaches the letter only if it was labelled
+`met` *and* its citation passed string verification. Criteria that came back
+`insufficient_evidence` are listed separately as a checklist of what the practice still needs to
+supply, rather than quietly dropped.
+
+Letters quote the canonical sentence from `criteria.json` rather than the model's copy of it. Both
+are the same text, but the canonical version is guaranteed character-for-character against the
+policy, and a document going in front of a claims reviewer should not carry whatever whitespace the
+model happened to emit.
+
+Across the 40 cases the template draft quotes **181 policy sentences, all verbatim, with zero
+unverified citations reaching a letter** — asserted in the notebook, not assumed.
+
+It is scored on **completeness, not writing quality**: does the draft contain the HCPCS code, the
+AHI, the event count, the adherence figures, what is being requested, and a policy quote? Only
+facts the record actually states are required, so a case where the sleep study never gives an AHI
+is not penalised for omitting one.
+
+| drafter | facts present | complete letters |
+|---|---|---|
+| template | 210/210 = 100% | 40/40 |
+| model | 204/210 = **97%** | **34/40** |
+
+The template scores 100% by construction — that is the floor, not a result. The model's letters
+read better, and the **only** thing they drop is the verbatim policy quotation, missing from **6
+of 40**. That is the published failure mode, and it is the one that matters here: a letter without
+the policy text is missing exactly the administrative detail a claims reviewer needs.
+
+**A measurement note worth keeping.** The first version of this checklist tested "what is being
+requested" by looking for the single word *redetermination*. Every model letter opened *"I am
+writing to formally appeal the denial of coverage for HCPCS code E0601…"* — it states the request
+plainly, just not with that Medicare term of art, which the drafting prompt never asked for. That
+scored the model at **78% and 0/40 complete**. Fixing the check to accept any phrasing of a
+request moved it to 97% and 34/40. A checklist that penalises wording rather than content is
+measuring the checklist.
+
 ## Running it
 
 ```bash
@@ -150,7 +189,13 @@ export GEMINI_API_KEY=...        # or put it in Colab secrets
 jupyter lab
 ```
 
-Notebooks run in order, 00 through 05. They pass data to each other through files in `data/`.
+Notebooks run in order, 00 through 07. They pass data to each other through files in `data/`.
+
+`06_walkthrough.ipynb` is the whole project in one explained notebook — the same code, with the
+reasoning written out. It defaults to zero API calls. Start there if you want to understand the
+pipeline rather than re-run it.
+
+`07_letter.ipynb` drafts the appeal and measures it.
 
 `04_experiments.ipynb` has `RUN_FULL = False` by default, which runs four smoke cases (~20 API
 calls) instead of all forty (~200). It also has a retrieval-only preflight cell that reports
